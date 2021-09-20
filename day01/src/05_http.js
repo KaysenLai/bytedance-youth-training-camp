@@ -5,21 +5,20 @@ http.createServer((request, response) => {
   // response.end("request")
 
   const {url, method} = request
-  // if (url === '/main.css') {
-  //   response.writeHead(200, {"Content-Type": "text/css"});
-  //   response.write(cssFile);
-  //   fs.readFile('main.css', (err, data) => {
-  //     if(err) {
-  //       response.writeHead(500, {"Content-Type": "text/css"})
-  //       response.end(('500 服务器挂了'))
-  //       return
-  //     }
-  //     response.statusCode = 200
-  //     response.writeHead(500, {'Content-Type':'text/html'})
-  //     response.end(data)
-  //
-  //   })
-  // }
+  if (url === '/main.css') {
+
+    fs.readFile('main.css', (err, data) => {
+      if(err) {
+        response.writeHead(500, {"Content-Type": "text/css"})
+        response.end(('500 css文件没找到'))
+        return
+      }
+      response.statusCode = 200
+      response.setHeader('Content-Type',"text/css")
+      response.end(data)
+    })
+    return
+  }
 
   if (url === '/' && method === 'GET') {
     fs.readFile('index.html', (err, data) => {
@@ -29,7 +28,7 @@ http.createServer((request, response) => {
         return
       }
       response.statusCode = 200
-      response.writeHead(500, {'Content-Type':'text/html'})
+      response.setHeader('Content-Type','text/html')
       response.end(data)
 
     })
