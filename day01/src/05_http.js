@@ -39,7 +39,7 @@ http.createServer((request, response) => {
   } else if(method === 'GET'&& headers.accept.indexOf('image/*') !== -1) {
     // 所有的图片，直接用readFile读取占内存太大
     // stream 流 /image1.jpg  => ./image1.jpg
-    const rs = fs.createReadStream('.' + 'image1.jpg')
+    fs.createReadStream('.' + 'image1.jpg').pipe(response)
 
   } else {
     response.statusCode = 400
