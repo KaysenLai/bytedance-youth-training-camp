@@ -1,6 +1,6 @@
 (async () => {
   const Sequelize = require('sequelize')
-  const sequelize = new Sequelize('kaikeba', 'root', '123456', {
+  const sequelize = new Sequelize('test', 'root', '123456', {
     host: 'localhost',
     dialect: 'mysql',
     operatorsAliases: false
@@ -19,4 +19,5 @@
     name: 'apple',
     price: 3.5
   })
+  console.log(ret)
 })()
