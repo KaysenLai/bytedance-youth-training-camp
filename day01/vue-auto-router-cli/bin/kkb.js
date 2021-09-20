@@ -8,3 +8,4 @@ program.command('init <name>').description('init project').action(name => {
   require('../lib/init')(name)
 })
 program.parse(process.argv)
+program .command('refresh') .description('refresh routers...') .action(require('../lib/refresh'))
