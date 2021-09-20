@@ -4,7 +4,7 @@ http.createServer((request, response) => {
   // console.log('A request', getPrototypeChain(response))
   // response.end("request")
 
-  const {url, method} = request
+  const {url, method ,headers} = request
   if (url === '/main.css') {
 
     fs.readFile('main.css', (err, data) => {
@@ -32,6 +32,15 @@ http.createServer((request, response) => {
       response.end(data)
 
     })
+  }else if(url === '/users' && method === 'POST') {
+    response.writeHead(200, {'Content-Type': 'text/json'})
+    response.end({name: "Chaokai"})
+
+  } else if(method === 'GET'&& headers.accept.indexOf('image/*') !== -1) {
+    // 所有的图片，直接用readFile读取占内存太大
+    // stream 流 /image1.jpg  => ./image1.jpg
+    const rs = fs.createReadStream('.' + 'image1.jpg')
+
   } else {
     response.statusCode = 400
     response.setHeader('Content-Type','text/plain;charset=utf-8')
