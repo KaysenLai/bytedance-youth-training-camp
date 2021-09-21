@@ -50,6 +50,7 @@ module.exports = {
   },
   devServer: {
     static: "./dist",
-    open:true
+    open:true,
+    port: 3000
   },
 };
