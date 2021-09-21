@@ -42,8 +42,27 @@ app.use((ctx) => {
     ctx.body = fs.readFileSync(p, 'utf-8')
     ctx.type = 'text/javascript'
     // 做一个标识，如果是Import * form "vue" => node_modules
+    const source = fs.readFileSync(p, "utf-8");
+    ctx.body = rewriteImport(source);
+  } else if (url.startsWith("/@modules")) {
+    // 应该去 node_modules里面去查找
+    const moduleName = url.replace("/@modules/", "");
+    // url => vue
+    const prefix = path.resolve(__dirname, "node_modules", moduleName);
+    // package.json
+    const module = require(prefix + "/package.json").module;
+    const filePath = path.join(prefix, module);
+    const ret = fs.readFileSync(filePath, "utf8");
+    ctx.type = "text/javascript";
+    ctx.body = rewriteImport(ret);
   }
 })
+
+function rewriteImport(content) {
+  return content
+    .replace(/(from\s+['"])(?![\.\/])/g, "$1/@modules/")
+    .replace(/process\.env\.NODE_ENV/g, '"development"');
+}
 
 app.listen(8000, () => {
   console.log("open server localhost:8000");
