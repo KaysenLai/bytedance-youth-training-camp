@@ -17,5 +17,11 @@
     "rollup": "^2.56.3",
     "rollup-plugin-terser": "^7.0.2",
     "the-answer": "^1.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.14"
+  },
+  "dependencies": {
+    "vue": "^2.6.14"
   }
 }
