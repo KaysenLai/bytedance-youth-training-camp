@@ -4,7 +4,7 @@ function getComponent() {
     .then(({ default: _ }) => {
       const element = document.createElement("div");
 
-      element.innerHTML = _.join(["Hello", "webpack"], " ");
+      element.innerHTML = _.join(["lazy", "load", "module"], " ");
 
       return element;
     })
