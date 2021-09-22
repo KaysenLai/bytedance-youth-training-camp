@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import "./Banner.scss";
 import { MobileOutlined } from "@ant-design/icons";
 import { Button } from "antd";
