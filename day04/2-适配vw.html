@@ -38,13 +38,33 @@
             font-size: 5vw;
             margin: 0 0.2vw;
         }
+        #box div:nth-of-type(1) {
+            margin: 0 0.2vw;
+        }
+
+        nav {
+            display: flex;
+        }
+        @media all and (max-width: 640px) {
+            nav a {
+                color: green;
+            }
+        }
     </style>
 </head>
 <body>
-<div id="box">
-    <div>尖货抽签</div>
-    <div>新品日历</div>
-</div>
+    <div id="box">
+        <div>尖货抽签</div>
+        <div>新品日历</div>
+    </div>
+    <nav>
+        <a href="/">nav-1</a>
+        <a href="/">nav-1</a>
+        <a href="/">nav-1</a>
+        <a href="/">nav-1</a>
+        <a href="/">nav-1</a>
+        <a href="/">nav-1</a>
+    </nav>
 <script>
   // 在更小的尺寸中展现更多的像素值
   // 原先1px的内容，放大到 devicePixelRatio px显示
