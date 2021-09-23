@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+        let box1 = document.querySelector('#bo1')
+        let box2 = document.querySelector('#bo2')
+        box1.addEventListener('touchstart', () => {
+          // 手指在元素中按下
+          console.log("touchstart", "box1")
+        })
+        box1.addEventListener('touchmove', () => {
+          console.log("touchmove", "box1")
+        })
+        box1.addEventListener('touchend', () => {
+          console.log("touchend", "box1")
+        })
+        box2.addEventListener('mousedown', () => {
+          console.log("mousedown", "box2")
+        })
+        box2.addEventListener('mousemove', () => {
+          console.log("mousemove", "box2")
+        })
+        box2.addEventListener('mouseup', () => {
+          console.log("mouseup", "box2")
+        })
+    </script>
+</body>
+
+</html>
