@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--    <meta name="viewport"-->
+    <!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+      (function () {
+        const metaEl = document.createElement('meta');
+        const scale = devicePixelRatio;
+        metaEl.setAttribute('name', 'viewport');
+        metaEl.setAttribute('content', 'initial-scale=' + (1/scale) + ', maximum-scale=' + (1/scale) + ', minimum-scale=' + (1/scale) + ', user-scalable=no');
+        document.documentElement.firstElementChild.appendChild(metaEl);
+      })();
+      // root em 设置
+      (function (){
+        // 375/15 = 25
+        // 1rem 等于屏幕尺寸的15分之一
+        const doc = document.documentElement;
+        doc.style.fontSize = window.innerWidth / 15 + 'px'
+      })()
+    </script>
+    <style>
+        body {
+            margin: 0;
+        }
+        #box {
+            display: flex;
+        }
+        /* 100vw 等于 1 屏幕宽度  1 vw 等于 3.75px */
+        #box div {
+            width: 46.4vw;
+            height: 24vw;
+            background: red;
+            font-size: 5vw;
+            margin: 0 0.2vw;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div>尖货抽签</div>
+    <div>新品日历</div>
+</div>
+<script>
+  // 在更小的尺寸中展现更多的像素值
+  // 原先1px的内容，放大到 devicePixelRatio px显示
+  console.log(window.devicePixelRatio)
+</script>
+</body>
+</html>
