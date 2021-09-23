@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 70vw;
+            height: 70vw;
+            background: red;
+            color: white;
+
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script>
+  // touchstart  手指触碰
+  // touchmove  手指移动
+  // touchend 手指抬起
+  let box = document.querySelector('#box')
+  box.addEventListener('touchstart', () => {
+    console.log('touchstart')
+  })
+  box.addEventListener('touchmove', (e) => {
+    box.innerHTML = `
+        触发当前事件手指个数：${e.changedTouches.length}
+        当前元素上手指的个数：${e.targetTouches.length}
+        当前屏幕上手指的个数：${e.touches.length}
+    `
+    console.log(e)
+  })
+  box.addEventListener('touchend', () => {
+    console.log('touchend')
+  })
+</script>
+</body>
+</html>
