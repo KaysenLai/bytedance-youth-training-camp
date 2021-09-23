@@ -52,7 +52,12 @@
     list.style.transform = `translate3d(0,${y}px,0)`
   };
   list.addEventListener('mousemove', (e) => {
-
+    startPoint= e.clientY
+    startEl = y
+    document.addEventListener('mousemove',move)
+    document.addEventListener('mouseup',() => {
+      document.removeEventListener('mousemove',move)
+    })
   })
 </script>
 </body>
