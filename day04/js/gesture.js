@@ -12,6 +12,9 @@ function enableGesture(element) {
     // PC
     element.addEventListener("mousedown", (event) => {
       let move = (event) => {
+        contexts[mouse_type].stop = () => {
+          event.preventDefault();
+        };
         onMove(event, contexts[mouse_type]);
       };
       let end = (event) => {
